@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 10, 2015 12:13:12 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.shaah.vouch_status.hibernatebeans.FtpUserTable" table="FTP_USER_TABLE" schema="FTPSERVERU" optimistic-lock="version">
+        <id name="userId" type="big_decimal">
+            <column name="USER_ID" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="ftpUserType" class="com.shaah.vouch_status.hibernatebeans.FtpUserType" fetch="select">
+            <column name="USER_TYPE_ID" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="username" type="string">
+            <column name="USERNAME" length="33" not-null="true" />
+        </property>
+        <property name="password" type="string">
+            <column name="PASSWORD" length="33" not-null="true" />
+        </property>
+        <set name="ftpJobUserMappings" table="FTP_JOB_USER_MAPPING" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="USER_ID" precision="22" scale="0" />
+            </key>
+            <one-to-many class="com.shaah.vouch_status.hibernatebeans.FtpJobUserMapping" />
+        </set>
+        <set name="ftpJobs" table="FTP_JOB" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="USER_ID" precision="22" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.shaah.vouch_status.hibernatebeans.FtpJob" />
+        </set>
+    </class>
+</hibernate-mapping>

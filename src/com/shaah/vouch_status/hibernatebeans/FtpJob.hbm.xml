@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 10, 2015 12:13:12 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.shaah.vouch_status.hibernatebeans.FtpJob" table="FTP_JOB" schema="FTPSERVERU" optimistic-lock="version">
+        <id name="jobId" type="big_decimal">
+            <column name="JOB_ID" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="ftpUserTable" class="com.shaah.vouch_status.hibernatebeans.FtpUserTable" fetch="select">
+            <column name="USER_ID" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="jobName" type="string">
+            <column name="JOB_NAME" length="45" not-null="true" unique="true" />
+        </property>
+        <property name="cronExp" type="string">
+            <column name="CRON_EXP" length="33" />
+        </property>
+        <property name="srcServerUrl" type="string">
+            <column name="SRC_SERVER_URL" length="55" />
+        </property>
+        <property name="srcServerUser" type="string">
+            <column name="SRC_SERVER_USER" length="33" />
+        </property>
+        <property name="srcServerPass" type="string">
+            <column name="SRC_SERVER_PASS" length="33" />
+        </property>
+        <property name="srcServerPath" type="string">
+            <column name="SRC_SERVER_PATH" length="200" />
+        </property>
+        <property name="destServerUrl" type="string">
+            <column name="DEST_SERVER_URL" length="200" />
+        </property>
+        <property name="destServerUser" type="string">
+            <column name="DEST_SERVER_USER" length="33" />
+        </property>
+        <property name="destServerPass" type="string">
+            <column name="DEST_SERVER_PASS" length="33" />
+        </property>
+        <property name="destServerPath" type="string">
+            <column name="DEST_SERVER_PATH" length="200" />
+        </property>
+        <property name="destSecureCon" type="big_decimal">
+            <column name="DEST_SECURE_CON" precision="22" scale="0" />
+        </property>
+        <property name="status" type="big_decimal">
+            <column name="STATUS" precision="22" scale="0" />
+        </property>
+        <property name="srcSecureCon" type="big_decimal">
+            <column name="SRC_SECURE_CON" precision="22" scale="0" />
+        </property>
+         <property name="postFTPOpt" type="big_decimal">
+            <column name="POST_FTP_OPTION" precision="22" scale="0" />
+        </property>
+        <property name="srcBckupDir" type="string">
+            <column name="SRC_BACKUP_DIR" length="200" />
+        </property>
+        <set name="ftpJobUserMappings" table="FTP_JOB_USER_MAPPING" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="JOB_ID" precision="22" scale="0" />
+            </key>
+            <one-to-many class="com.shaah.vouch_status.hibernatebeans.FtpJobUserMapping" />
+        </set>
+        <set name="ftpExceptionses" table="FTP_EXCEPTIONS" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="JOB_ID" precision="22" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.shaah.vouch_status.hibernatebeans.FtpExceptions" />
+        </set>
+    </class>
+</hibernate-mapping>

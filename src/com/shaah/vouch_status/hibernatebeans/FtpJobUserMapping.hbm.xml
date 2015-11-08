@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 10, 2015 12:13:12 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.shaah.vouch_status.hibernatebeans.FtpJobUserMapping" table="FTP_JOB_USER_MAPPING" schema="FTPSERVERU" optimistic-lock="version">
+        <id name="jobUserMappingId" type="big_decimal">
+            <column name="JOB_USER_MAPPING_ID" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="ftpUserTable" class="com.shaah.vouch_status.hibernatebeans.FtpUserTable" fetch="select">
+            <column name="USER_ID" precision="22" scale="0" />
+        </many-to-one>
+        <many-to-one name="ftpJob" class="com.shaah.vouch_status.hibernatebeans.FtpJob" fetch="select">
+            <column name="JOB_ID" precision="22" scale="0" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>
