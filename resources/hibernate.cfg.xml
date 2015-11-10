@@ -1,0 +1,41 @@
+
+<!-- ======================= This file should placed under ${project_home}/src-->
+
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+  
+  
+  <!-- ==============================Mysql connector============================ -->
+   
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property> 
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property> 
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/FTPSERVERU?useUnicode=true&amp;characterEncoding=UTF-8</property>
+   <property name="hibernate.connection.username">XXXXXXXXUSERNAMEXXXXXXXXX</property>
+    <property name="hibernate.connection.password">XXXXXXXXXPASSWORDXXXXXXX</property>
+   <!-- #############################End of mysql connector######################### -->
+   
+   
+   <!-- ==============================oracle connector============================ -->
+    
+    <!--  <property name="hibernate.dialect">org.hibernate.dialect.OracleDialect</property>-->
+    <!--  <property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>-->
+    <!--  <property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:orcl</property>-->
+    <!--  <property name="hibernate.connection.username">xxxxxxUser namexxxxxxxx</property>-->
+    <!--  <property name="hibernate.connection.password">xxxxxxxxxpasswordxxxxxx</property>-->
+    
+    <!-- #############################End of oracle connector######################### -->
+    
+    
+    
+    <mapping resource="com/shaah/vouch_status/hibernatebeans/FtpUserType.hbm.xml"/>
+    <mapping resource="com/shaah/vouch_status/hibernatebeans/FtpJobUserMapping.hbm.xml"/>
+    <mapping resource="com/shaah/vouch_status/hibernatebeans/FtpUserTable.hbm.xml"/>
+    <mapping resource="com/shaah/vouch_status/hibernatebeans/FtpJob.hbm.xml"/>
+     <mapping resource="com/shaah/vouch_status/hibernatebeans/FtpExceptions.hbm.xml"/>
+ 
+    
+    
+   
+  </session-factory>
+</hibernate-configuration>
